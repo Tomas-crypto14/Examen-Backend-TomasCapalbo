@@ -42,8 +42,6 @@ app.post("/minmax", (req, res) => {
         min: req.body.number,
         max: req.body.number
     })
-    res.send(minMath);
-    res.send(maxMath)
     res.send(minmax);
 })
 
