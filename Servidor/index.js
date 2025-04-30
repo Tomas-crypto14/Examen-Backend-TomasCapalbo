@@ -26,6 +26,7 @@ let comida = [
 //let comida = ["Hamburguesa", "Pizza", "Macarrones"];
 
 app.get("/comida", (req, res) => {
+    //Hay que ponerlo dentro para que funcione
     let randomFood = Math.floor(Math.random()*comida.length);
     res.send(comida[randomFood]);
 })
