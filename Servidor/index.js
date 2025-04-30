@@ -38,7 +38,8 @@ let minmax = [
 app.post("/minmax", (req, res) => {
 
     const number = req.body.number;
-    minmax.push(number);    
+    minmax.push(number); 
+    //Había que poner spread   
     const minMath = Math.min(...minmax);
     const maxMath = Math.max(...minmax);
     console.log(req.body.number);
