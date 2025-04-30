@@ -25,9 +25,8 @@ let comida = [
 
 //let comida = ["Hamburguesa", "Pizza", "Macarrones"];
 
-let randomFood = Math.floor(Math.random()*comida.length);
-
 app.get("/comida", (req, res) => {
+    let randomFood = Math.floor(Math.random()*comida.length);
     res.send(comida[randomFood]);
 })
 
@@ -36,27 +35,27 @@ let minmax = [
     
 ]
 app.post("/minmax", (req, res) => {
-    //const minMath = Math.min(minmax);
-    //const maxMath = Math.max(minmax);
+    const minMath = Math.min(minmax);
+    const maxMath = Math.max(minmax);
     console.log(req.body.number);
     minmax.push({
         min: req.body.number,
         max: req.body.number
     })
-    res.send("Numero introducido");
-})
-app.get("/minmax", (req, res) => {
-    res.send(minmax)
+    res.send(minMath);
+    res.send(maxMath)
+    res.send(minmax);
 })
 
 //EJERCICIO 3
 //Estaba puesto el app.put en vez de app.delete, put es para actualizar y eso es un codigo para eliminar usuarios,
 //no para actualizarlos.
-app.delete('/users', (res, req) => {
-    const userId = req.params.id;
-    const sql = `DELETE FROM users WHERE id=${userID}`;
+app.delete('/users/:id', (req, res) => {
+    const userId = Number(req.params.id);
+    const sql = `DELETE FROM users WHERE id=${userId}`;
     db.query(sql, (error, result) => {
         if(error) throw error;
+        console.log(result);
         res.send(`User ${userId} deleted from the db.`);
     })
 })
