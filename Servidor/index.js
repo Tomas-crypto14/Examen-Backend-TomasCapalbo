@@ -54,8 +54,10 @@ app.delete('/users/:id', (req, res) => {
     const sql = `DELETE FROM users WHERE id=${userId}`;
     db.query(sql, (error, result) => {
         if(error) throw error;
+        if (result.affectedRows > 0){
         console.log(result);
         res.send(`User ${userId} deleted from the db.`);
+        }
     })
 })
 
