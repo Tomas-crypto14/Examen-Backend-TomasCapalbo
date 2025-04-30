@@ -36,14 +36,13 @@ let minmax = [
     
 ]
 app.post("/minmax", (req, res) => {
-    const minMath = Math.min(minmax);
-    const maxMath = Math.max(minmax);
+
+    const number = req.body.number;
+    minmax.push(number);    
+    const minMath = Math.min(...minmax);
+    const maxMath = Math.max(...minmax);
     console.log(req.body.number);
-    minmax.push({
-        min: req.body.number,
-        max: req.body.number
-    })
-    res.send(minmax);
+    res.json ({min: minMath, max: maxMath});
 })
 
 //EJERCICIO 3
